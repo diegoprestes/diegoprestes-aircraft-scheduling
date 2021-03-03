@@ -1,0 +1,7 @@
+.aircraft-picker {
+  display: flex;
+  height: 8rem;
+  margin-bottom: calc(2.4rem - 1.2rem);
+  padding-bottom: 1.2rem;
+  overflow-x: auto;
+}

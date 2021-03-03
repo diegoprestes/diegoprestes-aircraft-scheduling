@@ -1,0 +1,11 @@
+.home {
+  width: 100%;
+  max-width: 110rem;
+  margin: 1.6rem auto;
+  padding: 0 1.6rem;
+}
+
+.home__headline {
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+}

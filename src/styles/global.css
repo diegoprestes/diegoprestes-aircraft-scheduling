@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #475F94;
+  --text: #FFF;
+  --nav-background: #FDDC5C;
+  --nav-text: #475F94;
+  --alt-background: #3B719F;
+  --disabled: #BBB;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+}
+
+html {
+  font-size: 10px;
+}
+
+body, input, button, textarea {
+  font-family: 'Open Sans', sans-serif;
+}
+

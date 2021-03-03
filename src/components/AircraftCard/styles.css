@@ -1,0 +1,31 @@
+.aircraft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  width: 18rem;
+  margin-right: 1.6rem;
+  padding: 1rem 2rem;
+  background: var(--alt-background);
+  border: 1px solid var(--alt-background);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.2s, border-color 0.2s;
+}
+
+.aircraft:hover {
+  border-color: white;
+  filter: brightness(0.9);
+}
+
+.aircraft--active {
+  border-color: white;
+}
+
+.aircraft__name {
+  font-size: 1.6rem;
+}
+
+.aircraft__item {
+  margin-bottom: 0.4rem;
+}

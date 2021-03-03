@@ -1,0 +1,15 @@
+.aircraft-timeline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--alt-background);
+  height: 4rem;
+}
+
+.aircraft-timeline__container {
+  width: 100%;
+  max-width: 110rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
