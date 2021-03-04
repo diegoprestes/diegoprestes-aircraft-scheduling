@@ -1,5 +1,7 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { Flight, FlightContext } from './FlightContext';
 import api, { Pagination } from '../services/api';
+import { calculateRouteUsage, validateRoute } from '../utils/RouteUtils';
 
 export interface Aircraft {
   ident: string;
@@ -21,7 +23,9 @@ interface AircraftContextData {
   aircrafts: Aircraft[];
   isAircraftLoading: boolean;
   selectAircraft: (ident: string) => void;
-  currentAircraftIdent: string
+  currentAircraftIdent: string;
+  isValidRoute: boolean;
+  aircraftUsage: number;
 }
 
 interface AircraftProviderProps {
@@ -31,14 +35,33 @@ interface AircraftProviderProps {
 export const AircraftContext = createContext({} as AircraftContextData);
 
 export function AircraftProvider({ children }: AircraftProviderProps) {
-  // TODO: request to api
+  const { activeFlights } = useContext(FlightContext);
+
   const [aircrafts, setAircrafts] = useState<Aircraft[]>([]);
   const [isAircraftLoading, setIsAircraftLoading] = useState(true);
   const [currentAircraftIdent, setCurrentAircraftIdent] = useState('');
 
+  const [isValidRoute, setIsValidRoute] = useState(true);
+  const [aircraftUsage, setAircraftUsage] = useState(0);
+
   const selectAircraft = (ident: string) => {
     setCurrentAircraftIdent(ident);
   };
+
+  useEffect(() => {
+    activeFlights.sort(function(a: Flight, b: Flight) {
+      if (a.departuretime < b.departuretime)
+        return -1;
+      else if (a.departuretime > b.departuretime) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    setIsValidRoute(validateRoute(activeFlights))
+    setAircraftUsage(calculateRouteUsage(activeFlights));
+  }, [activeFlights]);
 
   useEffect(() => {
     api.get(`/aircrafts?limit=10&offset=0`).then((response:AircraftResponse) => {
@@ -52,7 +75,9 @@ export function AircraftProvider({ children }: AircraftProviderProps) {
       aircrafts: aircrafts,
       isAircraftLoading,
       selectAircraft,
-      currentAircraftIdent
+      currentAircraftIdent,
+      isValidRoute,
+      aircraftUsage
     }}>
       {children}
     </AircraftContext.Provider>

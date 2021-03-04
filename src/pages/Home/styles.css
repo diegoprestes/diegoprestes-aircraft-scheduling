@@ -9,3 +9,43 @@
   font-size: 1.8rem;
   margin-bottom: 1.6rem;
 }
+
+.home__status {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1.6rem;
+}
+
+.home__status .home__headline {
+  margin-bottom: 0;
+}
+
+.home__status-text {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.home__status-text svg {
+  margin-left: 1rem;
+}
+
+.home__status-valid {
+  color: var(--green);
+}
+
+.home__status-invalid {
+  color: var(--red);
+}
+
+@media (min-width: 768px) {
+  .home__status {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .home__status-text {
+    margin-left: 1.6rem;
+  }
+}

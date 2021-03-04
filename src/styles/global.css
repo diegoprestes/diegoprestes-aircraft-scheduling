@@ -11,6 +11,11 @@
   --nav-text: #475F94;
   --alt-background: #3B719F;
   --disabled: #BBB;
+  --timeline-background: #BBB;
+  --timeline-stroke: #000;
+  --green: #0A0;
+  --purple: #A0A;
+  --red: #F00;
 }
 
 body {

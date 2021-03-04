@@ -24,8 +24,8 @@ interface FlightResponseData {
 interface FlightContextData {
   flights: Flight[];
   isFlightsLoading: boolean;
-  toggleActiveFlight: (id: string) => boolean;
-  activeFlights: string[];
+  toggleActiveFlight: (id: Flight) => boolean;
+  activeFlights: Flight[];
   hasMorePages: boolean;
   loadNextPage: () => void;
 }
@@ -40,27 +40,27 @@ export function FlightProvider({ children }: FlightProviderProps) {
   const [flights, setFlights] = useState<Flight[]>([]);
   const [hasMorePages, setHasMorePages] = useState(true);
   const [isFlightsLoading, setIsFlightsLoading] = useState(true);
-  const [activeFlights, setActiveFlights] = useState<string[]>([]);
+  const [activeFlights, setActiveFlights] = useState<Flight[]>([]);
   const [pageOffset, setPageOffset] = useState(-1);
 
   const pageLimit = 10;
 
-  const toggleActiveFlight = (id: string) => {
-    if (activeFlights.includes(id)) {
-      removeFlight(id);
+  const toggleActiveFlight = (flight: Flight) => {
+    if (activeFlights.includes(flight)) {
+      removeFlight(flight);
       return false;
     } else {
-      addFlight(id);
+      addFlight(flight);
       return true;
     }
   }
 
-  const addFlight = (id: string) => {
-    setActiveFlights([...activeFlights, id]);
+  const addFlight = (flight: Flight) => {
+    setActiveFlights([...activeFlights, flight]);
   };
 
-  const removeFlight = (id: string) => {
-    setActiveFlights(activeFlights.filter(flightId => flightId !== id));
+  const removeFlight = (flight: Flight) => {
+    setActiveFlights(activeFlights.filter(item => item.id !== flight.id));
   };
 
   const loadNextPage = useCallback(async () => {

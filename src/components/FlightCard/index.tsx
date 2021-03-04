@@ -18,7 +18,7 @@ export default function FlightCard({ flight }: FlightCardProps) {
   const activeClass = isActive ? 'flight-card--active' : '';
 
   const handleCardClick = () => {
-    const cardIsActive = toggleActiveFlight(flight.id);
+    const cardIsActive = toggleActiveFlight(flight);
     setIsActive(cardIsActive);
   };
 

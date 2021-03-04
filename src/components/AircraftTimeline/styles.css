@@ -9,7 +9,65 @@
 
 .aircraft-timeline__container {
   width: 100%;
+  height: 100%;
   max-width: 110rem;
   margin: 0 auto;
   padding: 0 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aircraft-timeline__bar-container {
+  position: relative;
+  background: var(--timeline-background);
+}
+
+.aircraft-timeline__bar {
+  position: relative;
+  width: 100%;
+  height: 0.8rem;
+  display: flex;
+}
+
+.aircraft-timeline__hour {
+  border: 1px solid var(--timeline-stroke);
+  flex-grow: 1;
+}
+
+.aircraft-timeline__labels {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.aircraft-timeline__label {
+  position: absolute;
+  top: -1.6rem;
+  transform: translateX(-50%);
+}
+
+.aircraft-timeline__bar-flights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.8rem;
+}
+
+.aircraft-timeline__flight {
+  position: absolute;
+  height: 0.8rem;
+  display: flex;
+}
+
+.aircraft-timeline__flight-time {
+  width: 50px;
+  height: 100%;
+  background: var(--green);
+}
+
+.aircraft-timeline__turnaround-time {
+  width: 20px;
+  height: 100%;
+  background: var(--purple);
 }
