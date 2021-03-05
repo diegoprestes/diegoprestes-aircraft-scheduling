@@ -22,8 +22,8 @@ interface AircraftResponseData {
 interface AircraftContextData {
   aircrafts: Aircraft[];
   isAircraftLoading: boolean;
-  selectAircraft: (ident: string) => void;
-  currentAircraftIdent: string;
+  selectAircraft: (aircraft: Aircraft) => void;
+  currentAircraft: Aircraft|null;
   isValidRoute: boolean;
   aircraftUsage: number;
 }
@@ -39,13 +39,13 @@ export function AircraftProvider({ children }: AircraftProviderProps) {
 
   const [aircrafts, setAircrafts] = useState<Aircraft[]>([]);
   const [isAircraftLoading, setIsAircraftLoading] = useState(true);
-  const [currentAircraftIdent, setCurrentAircraftIdent] = useState('');
+  const [currentAircraft, setCurrentAircraft] = useState<Aircraft|null>(null);
 
   const [isValidRoute, setIsValidRoute] = useState(true);
   const [aircraftUsage, setAircraftUsage] = useState(0);
 
-  const selectAircraft = (ident: string) => {
-    setCurrentAircraftIdent(ident);
+  const selectAircraft = (aircraft: Aircraft) => {
+    setCurrentAircraft(aircraft);
   };
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function AircraftProvider({ children }: AircraftProviderProps) {
       aircrafts: aircrafts,
       isAircraftLoading,
       selectAircraft,
-      currentAircraftIdent,
+      currentAircraft,
       isValidRoute,
       aircraftUsage
     }}>

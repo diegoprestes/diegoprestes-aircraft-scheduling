@@ -6,16 +6,18 @@ import './styles.css';
 
 interface FlightCardProps {
   flight: Flight;
+  preview?: boolean;
 }
 
-export default function FlightCard({ flight }: FlightCardProps) {
-  const { currentAircraftIdent } = useContext(AircraftContext);
+export default function FlightCard({ flight, preview }: FlightCardProps) {
+  const { currentAircraft } = useContext(AircraftContext);
   const { toggleActiveFlight } = useContext(FlightContext);
 
   const [isActive, setIsActive] = useState(false);
 
-  const disabledClass = !currentAircraftIdent ? 'flight-card--disabled' : '';
+  const disabledClass = !currentAircraft ? 'flight-card--disabled' : '';
   const activeClass = isActive ? 'flight-card--active' : '';
+  const previewClass = preview ? 'flight-card--preview' : '';
 
   const handleCardClick = () => {
     const cardIsActive = toggleActiveFlight(flight);
@@ -24,7 +26,7 @@ export default function FlightCard({ flight }: FlightCardProps) {
 
   return (
     <div
-      className={`flight-card ${disabledClass} ${activeClass}`}
+      className={`flight-card ${disabledClass} ${activeClass} ${previewClass}`}
       onClick={handleCardClick}
     >
       <h3 className="flight-card__name">

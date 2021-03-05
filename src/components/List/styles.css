@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+}
+
+.list--flights {
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .list {
+    border: 1px solid var(--white);
+    height: calc(100vh - 21.1rem);
+    overflow-y: auto;
+  }
+
+  .list--flights {
+    margin-bottom: 0;
+  }
+}

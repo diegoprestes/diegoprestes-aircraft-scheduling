@@ -8,18 +8,21 @@ interface AircraftCardProps {
 }
 
 export default function AircraftCard({ aircraft }: AircraftCardProps) {
-  const { selectAircraft, currentAircraftIdent } = useContext(AircraftContext);
+  const { selectAircraft, currentAircraft, aircraftUsage } = useContext(AircraftContext);
 
   function handleAircraftClick() {
-    selectAircraft(aircraft.ident);
+    selectAircraft(aircraft);
   }
 
   return (
     <div
-      className={`aircraft ${aircraft.ident === currentAircraftIdent ? 'aircraft--active' : ''}`}
+      className={`aircraft ${aircraft.ident === currentAircraft?.ident ? 'aircraft--active' : ''}`}
       onClick={handleAircraftClick}
     >
-      <h3 className="aircraft__name">{aircraft.ident}</h3>
+      <div className="aircraft__info">
+        <h3 className="aircraft__name">{aircraft.ident}</h3>
+        <span className="aircraft__usage">{aircraftUsage}%</span>
+      </div>
       <div>
         <p className="aircraft__item">
           <strong>Type:</strong> {aircraft.type}

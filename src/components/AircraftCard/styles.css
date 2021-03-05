@@ -2,9 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
-  width: 18rem;
-  margin-right: 1.6rem;
+  width: 100%;
+  margin-bottom: 1.6rem;
   padding: 1rem 2rem;
   background: var(--alt-background);
   border: 1px solid var(--alt-background);
@@ -22,8 +21,19 @@
   border-color: white;
 }
 
+.aircraft__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .aircraft__name {
   font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.aircraft__usage {
+  font-size: 1.4rem;
 }
 
 .aircraft__item {

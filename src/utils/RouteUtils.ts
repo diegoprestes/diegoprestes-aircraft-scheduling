@@ -31,5 +31,5 @@ export const calculateRouteUsage = (route: Flight[]) => {
     flightTime += (flight.arrivaltime - flight.departuretime) + turnaroundTime;
   });
 
-  return (flightTime * 100 / oneDay).toFixed(1);
+  return Number((flightTime * 100 / oneDay).toFixed(1));
 }

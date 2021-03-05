@@ -23,6 +23,10 @@
   pointer-events: none;
 }
 
+.flight-card--preview {
+  pointer-events: none;
+}
+
 .flight-card__name {
   font-size: 1.6rem;
   text-align: center;
@@ -50,14 +54,3 @@
   font-size: 1.2rem;
 }
 
-@media (min-width: 450px) {
-  .flight-card {
-    width: 48%;
-  }
-}
-
-@media (min-width: 768px) {
-  .flight-card {
-    width: 20rem;
-  }
-}
