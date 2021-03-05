@@ -19,7 +19,7 @@ interface AircraftResponseData {
   data: Aircraft[];
 }
 
-interface AircraftContextData {
+export interface AircraftContextData {
   aircrafts: Aircraft[];
   isAircraftLoading: boolean;
   selectAircraft: (aircraft: Aircraft) => void;
@@ -72,7 +72,7 @@ export function AircraftProvider({ children }: AircraftProviderProps) {
 
   return (
     <AircraftContext.Provider value={{
-      aircrafts: aircrafts,
+      aircrafts,
       isAircraftLoading,
       selectAircraft,
       currentAircraft,

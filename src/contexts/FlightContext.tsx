@@ -21,7 +21,7 @@ interface FlightResponseData {
   data: Flight[];
 }
 
-interface FlightContextData {
+export interface FlightContextData {
   flights: Flight[];
   isFlightsLoading: boolean;
   isFlightsLoadingMore: boolean;

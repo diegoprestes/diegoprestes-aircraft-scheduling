@@ -1,16 +1,17 @@
 import { useContext } from 'react';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
+
+import AircraftCard from '../../components/AircraftCard';
+import FlightCard from '../../components/FlightCard';
 import AircraftTimeline from '../../components/AircraftTimeline';
+import List from '../../components/List';
 import { Aircraft, AircraftContext } from '../../contexts/AircraftContext';
 import { Flight, FlightContext } from '../../contexts/FlightContext';
+import { oneDayInMilliseconds } from '../../utils/DateUtils';
 
 import './styles.css';
 import '../../styles/loader.css';
-import { oneDayInMilliseconds } from '../../utils/DateUtils';
-import List from '../../components/List';
-import AircraftCard from '../../components/AircraftCard';
-import FlightCard from '../../components/FlightCard';
 
 export default function Home() {
   const {
